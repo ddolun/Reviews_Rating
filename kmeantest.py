@@ -40,10 +40,10 @@ import pandas as pd
 import pickle
 sentences = []
 scores = []
-rows = pd.read_csv('test.csv')
+rows = pd.read_csv('test3.csv')
 i = 0 
 for index, row in rows.iterrows():
-    sentences.append(row['ckipnlp'])
+    sentences.(row['ckipnlp'])
     scores.append(row['score'])
     i+=1
 print("訓練了{}筆資料".format(i))
@@ -52,21 +52,24 @@ vector = TfidfVectorizer()
 X = vector.fit_transform(sentences)
 y = np.array(scores)
 # 切分訓練集和測試集
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 # 建立 SVM 回歸模型
 model = SVR(kernel='rbf', C=10, gamma=0.45)
+
 # 訓練及儲存模型
-model.fit(X_train, y_train)
-with open('model.pkl', 'wb') as f:
+model.fit(X, y)
+with open('117kmodel.pkl', 'wb') as f:
     pickle.dump(model, f)
-with open('vectorizer.pkl', 'wb') as f:
+with open('117kvectorizer.pkl', 'wb') as f:
     pickle.dump(vector, f)
+
+
 # 預測測試集的評分
-y_pred = model.predict(X_test)
-mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-print("MSE: ", mse)
-print("R²: ", r2)
+# y_pred = model.predict(X_test)
+# mse = mean_squared_error(y_test, y_pred)
+# r2 = r2_score(y_test, y_pred)
+# print("MSE: ", mse)
+# print("R²: ", r2)
 
 # 輸出結果
 # for i in range(len(y_pred)):

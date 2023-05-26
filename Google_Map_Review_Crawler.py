@@ -5,7 +5,7 @@ import sys
 import csv
 driver = webdriver.Chrome('D:\vscode\python\chromedriver')
 url = input('請輸入網址:')
-file = open('data37.csv',mode='a', newline='',encoding=('UTF-8'))
+file = open('R2testdata.csv',mode='a', newline='',encoding=('UTF-8'))
 headerList = ['Name','Stars','Reviews','Image','Date','numofreviews','ckipnlp','score','modelscore','sub_score']
 writer = csv.DictWriter(file,fieldnames=headerList)
 writer.writeheader()
