@@ -48,7 +48,7 @@ from ckipnlp.pipeline import CkipPipeline, CkipDocument
 datanum = 1
 pipeline = CkipPipeline()
 pattern = r'\bDfa\s+VK|D\s+VC|VH|VHC|VI\b'
-rows = pd.read_csv(r'D:\vscode\python\reviews_rating\CSV\訓練集\data37.csv')
+rows = pd.read_csv(r'D:\vscode\python\reviews_rating\CSV\訓練集\data45.csv')
 stop_pos = ['COLONCATEGORY','COMMACATEGORY','DASHCATEGORY','DOTCATEGORY','ETCCATEGORY','EXCLAMATIONCATEGORY','PARENTHESISCATEGORY','PAUSECATEGORY','PERIODCATEGORY','QUESTIONCATEGORY','SEMICOLONCATEGORY','SPCHANGECATEGORY','FW']
 
 for index, row in rows.iterrows():
@@ -96,5 +96,5 @@ for index, row in rows.iterrows():
 
     if datanum%100 == 0:
         print("已分析{}筆".format(datanum))
-rows.to_csv("stopwsdata37.csv", index=False)
+rows.to_csv(r"D:\vscode\python\reviews_rating\CSV\訓練集\data45.csv", index=False)
 print("處理了{}筆資料".format(datanum-1))
